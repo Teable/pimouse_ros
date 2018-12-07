@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #encoding: utf8
 import rospy, unittest, rostest, actionlib
-from std_msgs.msg import UInt16
 import rosnode
 import time
+from std_msgs.msg import UInt16
 from pimouse_ros.msg import MusicAction, MusicResult, MusicFeedback, MusicGoal
 
 class BuzzerTest(unittest.TestCase):
@@ -47,7 +47,7 @@ class BuzzerTest(unittest.TestCase):
 
 	def feedback_cb(self,feedback):
 		with open("/dev/rtbuzzer0","r") as f:
-			data = f.reedline()
+			data = f.readline()
 			self.device_values.append(int(data.rstrip()))
 
 if __name__ == '__main__':
